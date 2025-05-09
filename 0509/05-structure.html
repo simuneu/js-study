@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>html structure</title>
+  <style>
+    button{
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: aliceblue;
+      color: teal;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .clicked{
+      background-color: thistle;
+    }
+  </style>
+  <script>
+    window.onload=()=>{
+      const button = document.getElementById('colorBtn');
+
+      button.addEventListener('click', function(){
+        this.classList.toggle('clicked')
+      })
+      document.getElementById('btn').addEventListener('click',()=>{
+        alert('클릭 완료')
+      })
+    }
+  </script>
+</head>
+<body>
+  <h1>html+css+js역할 분리</h1>
+  <button id="colorBtn">색 바꾸기</button>
+  <button onclick="alert('버튼이 클릭되었습니다.')">클릭</button>
+  <button id="btn" onclick="click()">클릭</button>
+</body>
+</html>
