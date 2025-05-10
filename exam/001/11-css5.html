@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            position: relative;
+            margin-top: 100px;
+        }
+        .img1{
+            transform: skewY(30deg);
+            z-index: 3;
+            position: absolute;
+        }
+        .img1:hover{
+            transform: skewY(0deg);
+            transition: 0.5s;
+        }
+        .img2{
+            transform: skewY(30deg);
+            z-index: 2;
+            position: absolute;
+            left: 200px;
+
+        }
+        .img2:hover{
+            transform: skewY(0deg);
+            transition: 0.5s;
+        }
+        .img3{
+            transform: skewY(30deg);
+            z-index: 1;
+            position: absolute;
+            left: 400px;
+
+
+        }
+        .img3:hover{
+            transform: skewY(0deg);
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+    <img class="img1" src="https://kbthink.com/content/dam/kb-financial-group/Bank/GLX/02/001/2024/12/202412201909310/images/005.jpg" width="300px" alt="">
+    <img class="img2" src="https://kbthink.com/content/dam/kb-financial-group/Bank/GLX/02/001/2024/12/202412201909310/images/005.jpg" width="300px" alt="">
+    <img class="img3" src="https://kbthink.com/content/dam/kb-financial-group/Bank/GLX/02/001/2024/12/202412201909310/images/005.jpg" width="300px" alt="">
+    </div>
+</body>
+</html>
