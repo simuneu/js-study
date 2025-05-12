@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹 페이지 실습</title>
+  <style>
+    body{
+      display: flex;
+      justify-content: center;
+    }
+    .div1 {
+      width: 1000px;
+      height: 200px;
+      background-color: aliceblue;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    button {
+      background-color: white;
+      color: black;
+      border: none;
+      height: 30px;
+    }
+
+    button:hover{
+      background-color: lightpink;
+    }
+  </style>
+</head>
+<body>
+  <div class="div1">
+    <h1>나의 첫 웹 페이지</h1>
+    <p>이름을 입력하세요!</p>
+    <div  class="div2">
+      <input id="name" type="text" placeholder="이름" oninput="inputName()">
+      <button id="btn" onclick="btnClick()">인사하기</button>
+    </div>
+  </div>
+  <script>
+    let userName='';
+
+    const name= document.getElementById('name')
+    inputName=()=>{
+       userName=name.value
+    }
+
+    btnClick=()=>{
+      const msg = document.querySelector('p');
+      msg.textContent=`안녕하세요 ${userName}님`
+    }
+
+  </script>
+</body>
+</html>

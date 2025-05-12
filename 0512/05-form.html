@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>구글 폼 클론</title>
+  <link rel="stylesheet" href="./05-form.css">
+ 
+</head>
+<body>
+  <div>
+    <h1>구글 폼 클론 - 사용자 설문지</h1>
+    <form  id="googleForm" method="get">
+      <!-- <label for="formName"></label> label의 for와 name을 맞춰줘야 함 -->
+      이름 : <input id="formName" name="formName" type="text" placeholder="이름을 입력하세요."> <br><br>
+      이메일 : <input id="formMail" type="text" placeholder="example@gmail.com"> <br><br>
+      전화번호 : <input id="formTel" type="text" placeholder="010-1234-5678"> <br><br>
+      성별 : <select name="" id="">
+        <option value="">남성</option>
+        <option value="">여성</option>
+      </select>
+      <br><br>
+      <label>
+        이용약관에 동의 : <input type="checkbox" placeholder="010-1234-5678" id="formCheck"> <br><br>
+      </label>
+      <button id="submitBtn" onclick="submitForm()" >제출하기</button><br><br>
+      <button>질문 추가</button>
+    </form>
+  </div>
+  <script>
+    const googleForm = document.getElementById('googleForm');
+    const formTel = document.getElementById('formTel')
+    const submitBtn = document.getElementById('submitBtn')
+    const formCheck = document.getElementById('formCheck')
+
+    submitForm=()=>{
+      const formName = document.getElementById('formName')
+      const formMail = document.getElementById('formMail')
+      
+      if(formMail.value.trim()===''||
+        formName.value.trim()===''||
+        formTel.value.trim()===''||
+        !formCheck.checked){
+        alert('입력 란을 확인해주세요.')
+        return;
+      }
+      alert(`설문지 제출 완료!
+            이름:${formName.value}
+            이메일:${formMail.value}`);
+    }
+    googleForm.addEventListener('submit', (event)=>{
+      event.preventDefault();
+      
+    })
+  </script>
+</body>
+</html>
