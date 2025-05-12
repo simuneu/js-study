@@ -44,16 +44,29 @@
 </div>
 <script>
   // const googleForm = document.getElementById('googleForm');
+  const username = document.getElementById('username');
+  const email = document.getElementById('email');
+  const message = document.getElementById('message');
+  const submitBrn = document.getElementById('submit');
+  const messageList = document.getElementById('messageList');
  
   submitForm=(event)=>{
     event.preventDefault();
-    const username = document.getElementById('username').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    const submitBrn = document.getElementById('submit');
-    const messageList = document.getElementById('messageList');
+  
+    const li = document.createElement('li');
+    li.classList='list-group-item';
+    li.textContent=`${username.value} - ${email.value} : ${message.value}`
 
-    messageList.textContent=`${username} - ${email} : ${message}`
+    const delBtn= document.createElement('button');
+    delBtn.textContent='삭제';
+    delBtn.classList='btn btn-primary'
+    delBtn.style.marginLeft = '10px'; 
+    delBtn.onclick=()=>{
+      li.remove();
+    }
+    li.append(delBtn);
+    messageList.appendChild(li);
+    
     document.getElementById('username').value = '';
     document.getElementById('email').value = '';
     document.getElementById('message').value = '';
