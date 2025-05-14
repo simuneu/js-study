@@ -1,0 +1,16 @@
+body{
+  margin: 60px;
+}
+
+div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:10px
+}
+#current_song{
+  cursor: pointer;
+}
+#info_song_list{
+  cursor: pointer;
+}
