@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>라이브러리</title>
+  <!-- GSAP CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <!-- Swiper CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Chart.js CDN (데이터 시각화) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h2>GSAP ex</h2>
+  <div class="box" style="width: 100px; height: 100px; background-color: lightpink;"></div> 
+
+  <h2>Swiper ex</h2>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+    </div>
+  </div>
+
+  <h2>Chart ex</h2>
+  <canvas id="myChart" width="400" height="200"></canvas>
+
+  <script>
+    gsap.to(".box", {x:300, duration:1, ease:"bounce"})
+
+    const swiper = new Swiper('.swiper', {loop:true, autoplay:{delay:1000}})
+
+    const ctx = document.getElementById('myChart').getContext('2d')
+    console.log(ctx);
+        new Chart(ctx, {
+          type: 'bar', 
+          data: {
+            labels: ['Red', 'Blue', 'Yellow'],
+            datasets: [{
+              label: 'Votes',
+              data: [12, 19, 3],
+              backgroundColor: ['red', 'blue', 'yellow']
+            }]
+          }
+    });
+
+  </script>
+</body>
+</html>
