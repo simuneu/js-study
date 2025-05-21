@@ -1,3 +1,6 @@
+body{
+  padding-top: 50px;
+}
 .fork:hover{
   transform: rotate(-30deg);
   transition: transform 0.8;
@@ -10,4 +13,9 @@
 
 .navbar-brand{
    font-weight: bold;
+}
+
+.navbar.bg-light-transparent {
+  background-color: rgba(248, 249, 250, 0.8) !important;
+  backdrop-filter: blur(5px); /* 선택사항: 블러 배경 효과 */
 }

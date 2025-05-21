@@ -26,41 +26,49 @@
 
   <div class="input_group">
     <div class="input-group">
-      <input type="text" id="searchInput" class="form-control" placeholder="알고싶은 영화를 검색하세요" aria-label="영화를 검색하세요" aria-describedby="button-addon2">
+      <input type="text" id="searchInput" class="form-control" placeholder="궁금한 영화를 검색하세요" aria-label="영화를 검색하세요" aria-describedby="button-addon2">
       <button class="btn btn-outline-secondary" type="button" id="button-addon2">search</button>
     </div>
   </div>
 
   <div class="content_wrapper">
     <div class="movie_poster_group">
-      <div class="card" style="width: 18rem;">
-        <img src="" class="card-img-top" alt="">
-        <div class="card-body">
-          <h5 class="card-title">영화제목</h5>
-          <p class="card-text">영화설명</p>
+      <a href="#" style="text-decoration:none; color:inherit;">
+        <div class="card" style="width: 18rem;">
+          <img src="" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title">영화제목</h5>
+            <p class="card-text">영화설명</p>
+          </div>
         </div>
-      </div>
-      <div class="card" style="width: 18rem;">
-        <img src="" class="card-img-top" alt="">
-        <div class="card-body">
-          <h5 class="card-title">영화제목</h5>
-          <p class="card-text">영화설명</p>
+      </a>
+      <a href="#" style="text-decoration:none; color:inherit;">
+        <div class="card" style="width: 18rem;">
+          <img src="" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title">영화제목</h5>
+            <p class="card-text">영화설명</p>
+          </div>
         </div>
-      </div>
-      <div class="card" style="width: 18rem;">
-        <img src="" class="card-img-top" alt="">
-        <div class="card-body">
-          <h5 class="card-title">영화제목</h5>
-          <p class="card-text">영화설명</p>
+      </a>
+      <a href="#" style="text-decoration:none; color:inherit;">
+        <div class="card" style="width: 18rem;">
+          <img src="" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title">영화제목</h5>
+            <p class="card-text">영화설명</p>
+          </div>
         </div>
-      </div>
-      <div class="card" style="width: 18rem;">
-        <img src="" class="card-img-top" alt="">
-        <div class="card-body">
-          <h5 class="card-title">영화제목</h5>
-          <p class="card-text">영화설명</p>
+      </a>
+      <a href="#" style="text-decoration:none; color:inherit;">
+        <div class="card" style="width: 18rem;">
+          <img src="" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title">영화제목</h5>
+            <p class="card-text">영화설명</p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
     
@@ -74,9 +82,25 @@
       .then(res => res.text())
       .then(data => {
         document.getElementById('navItem').innerHTML = data;
+        
+        const script=document.createElement('script');
+        script.src='./index.js';
+        document.body.appendChild(script)
       });
   </script>
-  <script src="./index.js"></script>
+  <!-- <script src="./index.js"></script> -->
+   <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.animate-me');
+      console.log('애니메이션 적용 대상 개수:', elements.length);
+
+      elements.forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.add('visible');
+        }, i * 300);
+      });
+    });
+   </script>
 </body>
 </html>
 

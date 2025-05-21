@@ -1,0 +1,56 @@
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  margin-top: 150px;
+  align-items: center;
+}
+
+.img_about{
+  width: 250px;
+  margin-bottom: 30px;
+  color: rgb(82, 255, 94);
+}
+
+@keyframes rotateLR {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.img_about {
+  display: block;
+  margin: 0 auto;
+  animation: rotateLR 4s linear infinite;
+}
+
+.img_about:hover {
+  content: url('./img/skel.png');
+  width: 230px;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.git {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  animation: wave 2s ease-in-out infinite;
+  margin-top: 80px;
+}
+
+.text_section{
+  text-align: center;
+}
+
+.git_img{
+  width: 20px;
+}

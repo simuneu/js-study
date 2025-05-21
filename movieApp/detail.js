@@ -1,14 +1,3 @@
-window.addEventListener('DOMContentLoaded', () => {
-  const elements = document.querySelectorAll('.animate-me');
-  console.log('애니메이션 적용 대상 개수:', elements.length);
-
-  elements.forEach((el, i) => {
-    setTimeout(() => {
-      el.classList.add('visible');
-    }, i * 300); // 0ms, 300ms, 600ms 간격으로 클래스 추가
-  });
-});
-
 const movieList = {
   page: 1,
   results: [
@@ -3407,104 +3396,33 @@ const movieList = {
   total_results: 1008061,
 };
 
-const movieContainer = document.querySelector(".movie_poster_group");
-const moreBtn= document.getElementById("loadMoreBtn");
-const movieImg = document.querySelectorAll(".card-img-top");
-const movieTitle = document.querySelectorAll(".card-title");
-const movieText = document.querySelectorAll(".card-text");
+const params = new URLSearchParams(window.location.search);
+const movieId = params.get("id");
+console.log(movieId);
 
-const baseImgUrl = "https://image.tmdb.org/t/p/w440_and_h660_face"
 
-const searchBtn = document.getElementById("button-addon2") 
-const searchInput = document.getElementById("searchInput") 
-let filteredMovie = movieList.results;
+let movie = null;
 
-for(let i =0; i<4; i++){
-  const anchor= document.querySelectorAll('.movie_poster_group a')
-  const randomIndex = Math.floor(Math.random()*movieList.results.length)
-  const movie = movieList.results[randomIndex]
-  console.log(movieList.results.length)
-  movieImg[i].src = baseImgUrl+movie.poster_path;
-  movieTitle[i].textContent = movie.title;
-  movieText[i].textContent = movie.overview;
-  anchor[i].href=`./detail.html?id=${movie.id}`
+for(let i=0; i<movieList.results.length; i++){
+  if(movieList.results[i].id ==movieId) {
+    movie = movieList.results[i]
+  }
 }
 
-moreBtn.addEventListener('click', ()=>{
-  for(let i=0; i<8; i++){
-    const randomIndex = Math.floor(Math.random()*movieList.results.length)
-    const movie = movieList.results[randomIndex]
+if(movie){
+  const baseImgUrl = "https://image.tmdb.org/t/p/w440_and_h660_face";
 
-    const anchor = document.createElement('a');
-    anchor.href = `detail.html?id=${movie.id}`
-    anchor.style.textDecoration='none';
-    anchor.style.color='inherit';
+  const backImg = document.querySelector(".back_img")
+  const movieImg = document.querySelector(".movie_img")
+  const movieTitle = document.querySelector(".movie_title")
+  const releaseDate = document.querySelector(".release_date")
+  const overview = document.querySelector(".overview")
 
-    const card = document.createElement('div');
-    card.classList.add('card')
-    card.style.width="18rem";
-    // console.log(`src="${baseImgUrl+movie.poster_path}`)
-
-    card.innerHTML=`
-        <img src="${baseImgUrl+movie.poster_path}" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title">${movie.title}</h5>
-            <p class="card-text">${movie.overview}</p>
-          </div>
-        `
-    anchor.appendChild(card)
-    movieContainer.appendChild(anchor);
-  }
-})
-
-const randomMovie = document.getElementById("random_movie");
-if(randomMovie){
-  randomMovie.addEventListener('click', (event)=>{
-    event.preventDefault();
-    
-    const randomIndex = Math.floor(Math.random()*movieList.results.length);
-    const randomMovieIndex= movieList.results[randomIndex]
-    window.location.href=`./detail.html?id=${randomMovieIndex.id}`
-  })
+  backImg.src = baseImgUrl+movie.backdrop_path;
+  movieImg.src = baseImgUrl+movie.poster_path;
+  movieTitle.textContent = movie.title;
+  releaseDate.textContent = movie.release_date;
+  overview.textContent= movie.overview.replace(/\n/g, "<br>")
+}else{
+  alert("영화를 찾을 수 없습니다.")
 }
-
-searchBtn.addEventListener('click', ()=>{
-  const keyword = searchInput.value.toLowerCase().trim();
-  movieContainer.innerHTML="";
-
-  const filteredMovies = movieList.results.filter(movie=>
-    movie.title.toLowerCase().includes(keyword)
-  );
-
-  if(filteredMovies.length===0){
-    movieContainer.innerText=`검색결과가 없습니다.`
-    return;
-  }
-  filteredMovies.forEach(movie=>{
-    const anchor = document.createElement('a');
-    anchor.href = `detail.html?id=${movie.id}`
-    anchor.style.textDecoration='none';
-    anchor.style.color='inherit';
-
-    const card = document.createElement('div');
-    card.classList.add('card')
-    card.style.width="18rem";
-
-    card.innerHTML=`
-        <img src="${baseImgUrl+movie.poster_path}" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">${movie.title}</h5>
-            <p class="card-text">${movie.overview}</p>
-          </div>
-        `
-      anchor.appendChild(card);
-      movieContainer.appendChild(anchor)
-  })
-})
-
-searchInput.addEventListener("keypress", (e)=>{
-  if(e.key ==="Enter"){
-    searchBtn.click();
-  }
-})
-
