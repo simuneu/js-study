@@ -105,22 +105,6 @@ const movieList = {
     },
     {
       adult: false,
-      backdrop_path: null,
-      genre_ids: [28, 53],
-      id: 1480799,
-      original_language: "pt",
-      original_title: "The Great Escape",
-      overview: "",
-      popularity: 345.5976,
-      poster_path: "/h7shL668vhC2wsZQSBWzxkMuZ8K.jpg",
-      release_date: "2023-05-26",
-      title: "The Great Escape",
-      video: false,
-      vote_average: 0,
-      vote_count: 0,
-    },
-    {
-      adult: false,
       backdrop_path: "/bIh56F8e5EaZ3r2nD1hXAOisItZ.jpg",
       genre_ids: [12, 10751],
       id: 1094473,
@@ -3426,3 +3410,37 @@ if(movie){
 }else{
   alert("영화를 찾을 수 없습니다.")
 }
+
+  const chartCanvas = document.getElementById("pie-chart");
+    if (chartCanvas) {
+        new Chart(chartCanvas, {
+            type: 'pie',
+            data: {
+                labels: ["vote_average", "popularity", "vote_count"],
+                datasets: [{
+                    label: "Favorite movie genre",
+                    backgroundColor: ["rgb(255, 201, 246)", "rgb(193, 192, 255)", "rgb(181, 255, 213)"],
+                    data: [
+                        movie.vote_average,
+                        movie.popularity,
+                        movie.vote_count
+                    ]
+                }]
+            },
+            options: {
+                responsive: false,
+                maintainAspectRatio: false,
+                title: {
+                    display: true,
+                    text: 'Movie Stats',
+                    fontColor: '#000000'
+                },
+                legend: {
+                labels: {
+                  fontSize: 14,
+                  fontColor: '#000000'
+                }
+              }
+            }
+        });
+    }
